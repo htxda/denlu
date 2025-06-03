@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登录系统 - 访问目标网站</title>
+    <title>青莲剑阁 - 登录系统</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background:
+                        url('https://shp.qpic.cn/ishow/2735092509/1727228752_829394697_17462_sProdImgNo_3.jpg/0') center/cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .li-bai-title {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            letter-spacing: 3px;
+            font-family: '楷体', 'STKaiti', serif;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px solid #ffd700;
         }
         
         @keyframes gradientBG {
@@ -34,16 +52,18 @@
             display: flex;
             width: 900px;
             height: 550px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             position: relative;
+            z-index: 10;
+            border: 2px solid rgba(255, 215, 0, 0.5);
         }
         
         .left-panel {
             flex: 1;
-            background: linear-gradient(45deg, #4776E6, #8E54E9);
+            background: linear-gradient(45deg, rgba(71, 118, 230, 0.8), rgba(142, 84, 233, 0.8));
             color: white;
             padding: 50px 40px;
             display: flex;
@@ -51,6 +71,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .left-panel::before {
@@ -67,6 +88,9 @@
             font-size: 2.8rem;
             margin-bottom: 15px;
             font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: #ffd700;
+            letter-spacing: 3px;
         }
         
         .welcome-text p {
@@ -84,6 +108,15 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateX(10px);
+            background: rgba(0, 0, 0, 0.5);
         }
         
         .feature i {
@@ -96,6 +129,18 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover i {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #ffd700;
         }
         
         .right-panel {
@@ -104,17 +149,23 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
         }
         
         .login-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
         
         .login-header h2 {
             font-size: 2.2rem;
             color: #333;
             margin-bottom: 10px;
+            background: linear-gradient(to right, #8E54E9, #4776E6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .login-header p {
@@ -193,6 +244,24 @@
             box-shadow: 0 5px 15px rgba(71, 118, 230, 0.4);
             width: 100%;
             margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+        }
+        
+        .login-btn:hover::after {
+            transform: rotate(30deg) translate(20%, 20%);
         }
         
         .login-btn:hover {
@@ -246,18 +315,18 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
+        .social-btn.qq:hover {
+            background: #12B7F5;
+            color: white;
+        }
+        
+        .social-btn.weixin:hover {
+            background: #2AAC19;
+            color: white;
+        }
+        
         .social-btn.google:hover {
             background: #dd4b39;
-            color: white;
-        }
-        
-        .social-btn.facebook:hover {
-            background: #3b5998;
-            color: white;
-        }
-        
-        .social-btn.twitter:hover {
-            background: #1da1f2;
             color: white;
         }
         
@@ -349,6 +418,10 @@
             .right-panel {
                 padding: 40px 30px;
             }
+            
+            .li-bai-silhouette {
+                display: none;
+            }
         }
         
         .target-site-info {
@@ -357,83 +430,147 @@
             background: rgba(71, 118, 230, 0.1);
             border-radius: 10px;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .target-site-info p {
             margin: 5px 0;
             font-size: 0.9rem;
-            color: #4776E6;
+            color: white;
+        }
+        
+        /* 剑光动画效果 */
+        @keyframes swordGlow {
+            0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+        }
+        
+        .sword-effect {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            bottom: 0;
+            left: 0;
+            animation: swordGlow 3s infinite;
+        }
+        
+        .poem {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-style: italic;
+            max-width: 300px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+            font-family: '楷体', 'STKaiti', serif;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 1px solid #ffd700;
+            animation: fadeIn 2s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .sword-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: url('https://img.alicdn.com/imgextra/i4/2206607034460/O1CN01uLcYvT1cS1XfDkDxN_!!2206607034460.png') center/contain no-repeat;
+            filter: drop-shadow(0 0 5px gold);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+    <div class="sword-icon"></div>
+    <div class="li-bai-title">青莲剑仙 · 李白</div>
+    
+    <div class="poem">"十步杀一人，千里不留行。事了拂衣去，深藏身与名。"</div>
+    
     <div class="container">
+        <div class="sword-effect"></div>
+        
         <div class="left-panel">
             <div class="welcome-text">
-                <h1>欢迎登录</h1>
-                <p>请使用您的账户登录，登录成功后您将访问目标网站内容。</p>
+                <h1>青莲剑阁</h1>
+                <p>登录剑仙之境，解锁专属内容</p>
             </div>
             <div class="features">
                 <div class="feature">
                     <i class="fas fa-shield-alt"></i>
                     <div>
-                        <h3>安全验证</h3>
-                        <p>您的账户信息受到加密保护</p>
+                        <h3>剑阵防护</h3>
+                        <p>您的账户信息受到剑阵加密保护</p>
                     </div>
                 </div>
                 <div class="feature">
                     <i class="fas fa-external-link-alt"></i>
                     <div>
-                        <h3>网站跳转</h3>
-                        <p>登录成功后自动跳转至目标网站</p>
+                        <h3>剑意穿梭</h3>
+                        <p>登录成功后御剑飞行至目标网站</p>
                     </div>
                 </div>
                 <div class="feature">
                     <i class="fas fa-bolt"></i>
                     <div>
-                        <h3>快速访问</h3>
-                        <p>极速响应，无缝跳转体验</p>
+                        <h3>剑影流光</h3>
+                        <p>极速响应，御剑飞行体验</p>
                     </div>
                 </div>
             </div>
             
             <div class="target-site-info">
                 <p><i class="fas fa-link"></i> 目标网站: https://htxda.github.io/mayutao/</p>
-                <p><i class="fas fa-info-circle"></i> 登录成功后将在3秒内自动跳转</p>
+                <p><i class="fas fa-info-circle"></i> 登录成功后将御剑飞行至目标地</p>
             </div>
         </div>
         
         <div class="right-panel">
             <div class="login-header">
-                <h2>账户登录</h2>
-                <p>请输入您的账户信息</p>
+                <h2>剑仙登录</h2>
+                <p>请输入您的剑阁凭证</p>
             </div>
             
             <form id="loginForm">
                 <div class="input-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="username" placeholder="用户名或电子邮箱" required>
-                    <div class="error-message" id="username-error">请输入有效的用户名或邮箱</div>
+                    <input type="text" id="username" placeholder="剑阁名号" required>
+                    <div class="error-message" id="username-error">请输入有效的名号</div>
                 </div>
                 
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="密码" required>
-                    <div class="error-message" id="password-error">密码不能少于6个字符</div>
+                    <input type="password" id="password" placeholder="剑诀密码" required>
+                    <div class="error-message" id="password-error">剑诀不能少于6个字符</div>
                 </div>
                 
                 <div class="options">
                     <div class="remember">
                         <input type="checkbox" id="remember">
-                        <label for="remember">记住我</label>
+                        <label for="remember">记住剑诀</label>
                     </div>
-                    <a href="#" class="forgot-password">忘记密码?</a>
+                    <a href="#" class="forgot-password">剑诀遗失?</a>
                 </div>
                 
-                <button type="submit" class="login-btn">登录</button>
+                <button type="submit" class="login-btn">登入剑阁</button>
                 
                 <div class="divider">
-                    <span>或使用其他方式登录</span>
+                    <span>或使用其他方式</span>
                 </div>
                 
                 <div class="social-login">
@@ -449,7 +586,7 @@
                 </div>
                 
                 <div class="signup-link">
-                    <p>还没有账户? <a href="#">立即注册</a></p>
+                    <p>尚无剑阁名号? <a href="#">申请剑阁</a></p>
                 </div>
             </form>
         </div>
@@ -457,8 +594,8 @@
         <div class="loader" id="loader">
             <div class="spinner"></div>
             <div class="redirect-text">
-                <p>登录成功！正在跳转到目标网站...</p>
-                <p>如果未自动跳转，<a href="https://htxda.github.io/mayutao/" id="manualRedirect">请点击这里</a></p>
+                <p>剑诀验证成功！正在御剑飞行至目标网站...</p>
+                <p>如果未自动飞行，<a href="https://htxda.github.io/mayutao/" id="manualRedirect">请点击这里</a></p>
             </div>
         </div>
     </div>
@@ -496,7 +633,7 @@
             const loader = document.getElementById('loader');
             const loginBtn = document.querySelector('.login-btn');
             
-            loginBtn.textContent = '登录中...';
+            loginBtn.textContent = '剑诀验证中...';
             loginBtn.disabled = true;
             
             // 模拟登录过程
@@ -525,7 +662,7 @@
             
             // 添加社交登录点击事件
             button.addEventListener('click', function() {
-                alert('该登录方式暂未启用，请使用账户登录');
+                alert('剑仙云游中，暂无法使用此方式登录');
             });
         });
         
@@ -534,6 +671,13 @@
             e.preventDefault();
             window.location.href = 'https://htxda.github.io/mayutao/';
         });
+        
+        // 添加诗句动画
+        const poem = document.querySelector('.poem');
+        setTimeout(() => {
+            poem.style.opacity = 1;
+            poem.style.transform = 'translateY(0)';
+        }, 1000);
     </script>
 </body>
 </html>
